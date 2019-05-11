@@ -62,6 +62,8 @@ nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
 nnoremap aa ^
 onoremap p i(
 
+nnoremap <leader>nt :split ~/.cloud/temp.md<cr>
+
 nnoremap <silent> <leader>tt :TagbarToggle<CR>
 
 nnoremap <leader>fu :CtrlPFunky<Cr>
