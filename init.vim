@@ -9,6 +9,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'easymotion/vim-easymotion'
 Plug 'scrooloose/nerdtree'
 Plug 'Shougo/denite.nvim'
+Plug 'bling/vim-bufferline'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dyng/ctrlsf.vim'
 Plug 'tpope/vim-markdown'
@@ -22,6 +23,9 @@ call neomake#configure#automake('w')
 call neomake#configure#automake('nw', 750)
 call neomake#configure#automake('rw', 1000)
 call neomake#configure#automake('nrwi', 500)
+
+" 分屏同时移动
+" set scb
 
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#go#gocode_binary = '~/.gotools/gocode'
@@ -46,6 +50,7 @@ set nobackup
 set noswapfile
 set autoread
 set autowrite
+set autochdir
 set confirm
 
 let mapleader = ","
@@ -54,7 +59,8 @@ let maplocalleader = ";"
 nnoremap <leader>v :execute "rightbelow split" . bufname("#")<cr>
 inoremap jk <esc>
 inoremap <c-u> viwgU
-nnoremap <leader>ev :split $MYVIMRC<cr>
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>nt :vsplit /Users/rela/.cloud/temp.md<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
 nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
@@ -80,6 +86,30 @@ iabbrev waht what
 iabbrev tehn then
 iabbrev diff difference
 iabbrev dict //********dict: word data:
+iabbrev /// // abin:
 
-au FileType go nmap <leader>r <Plug>(go-run)
+"au FileType go nmap <leader>r <Plug>(go-run)
+map <leader>r :execute "!go run main.go"<cr>
+map <leader>i :GoImport 
 
+
+
+let g:NERDShutUp=1
+let NERDTreeShowBookmarks=1
+let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
+let NERDTreeChDirMode=0
+let NERDTreeQuitOnOpen=1
+let NERDTreeMouseMode=2
+let NERDTreeShowHidden=1
+let NERDTreeKeepTreeInNewTab=1
+
+nmap     <C-F>f <Plug>CtrlSFPrompt
+nnoremap <C-F>o :CtrlSFOpen<CR>
+
+let g:ctrlsf_auto_focus = {
+\ "at" : "done",
+\ "duration_less_than": 1000
+\ }
+let g:ctrlsf_ignore_dir = ['vendor']
+
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
