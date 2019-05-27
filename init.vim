@@ -16,6 +16,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'majutsushi/tagbar'
 Plug 'tacahiroy/ctrlp-funky'
 Plug 'bling/vim-bufferline'
+Plug 'ianva/vim-youdao-translater'
 
 call plug#end()
 
@@ -71,6 +72,8 @@ nnoremap <leader>r :!go run main.go<Cr>
 nnoremap <leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 
 nnoremap <silent> <leader>gr :Gread<CR>
+nnoremap <leader>i :GoImport 
+nnoremap <leader>te :!go test<CR>
 
 augroup filetype_vim
    autocmd!
@@ -100,3 +103,6 @@ let g:ctrlsf_auto_focus = {
     \ "at": "done",
     \ "duration_less_than": 1000
     \ }
+
+vnoremap <leader>yd  :<C-u>Ydv<CR><CR>
+nnoremap <leader>yd  :<C-u>Ydc<CR><CR>
