@@ -1,9 +1,15 @@
 call plug#begin('~/.config/nvim/plugged')
+"Plug 'MarcWeber/vim-addon-mw-utils'
+"Plug 'tomtom/tlib_vim'
+"Plug 'garbas/vim-snipmate'
+"Plug 'SirVer/ultisnips'
 Plug 'stamblerre/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
+Plug 'Shougo/neopairs.vim'
 Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
-Plug 'stamblerre/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 "Plug 'neomake/neomake'
 Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
@@ -19,9 +25,21 @@ Plug 'tacahiroy/ctrlp-funky'
 Plug 'bling/vim-bufferline'
 Plug 'ianva/vim-youdao-translater'
 Plug 'AndrewRadev/splitjoin.vim' "gJ命令切片多行合并成一行，或gS命令一行拆分成多行插件
-Plug 'SirVer/ultisnips'
-
 call plug#end()
+
+" deoplete + neosnippet + neoparis 
+let g:deoplete#enable_at_startup = 1 
+let g:neopairs#enable = 1
+let g:neosnippet#disable_runtime_snippets = {
+\   '_' : 1,
+\ }
+call deoplete#custom#source('_', 'converters', ['converter_auto_paren'])
+imap <expr><TAB> pumvisible() ? "\<C-n>" : (neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>") 
+imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
+imap <expr><CR> pumvisible() ? deoplete#mappings#close_popup() : "\<CR>"
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>      <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
 
 "call neomake#configure#automake('w')
 "call neomake#configure#automake('nw', 750)
@@ -35,11 +53,6 @@ let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const
 let g:go_bin_path = expand("~/.gotools")
 
 map <C-e> :NERDTreeToggle<CR>
-
-" deoplete
-imap <expr> <tab>   pumvisible() ? "\<c-n>" : "\<tab>"
-imap <expr> <s-tab> pumvisible() ? "\<c-p>" : "\<tab>"
-imap <expr> <cr>    pumvisible() ? deoplete#close_popup() : "\<cr>"
 
 set clipboard=unnamed    " On mac and Windows, use * register for copy-paste
 set shiftwidth=8
@@ -60,6 +73,8 @@ nnoremap <leader>v :execute "rightbelow split" . bufname("#")<cr>
 inoremap jk <esc>
 inoremap <c-u> viwgU
 nnoremap <leader>ev :split $MYVIMRC<cr>
+nnoremap <leader>es :vsplit ~/.config/nvim/plugged/vim-go/gosnippets/UltiSnips/go.snippets<cr>
+nnoremap <leader>en :vsplit ~/.cloud/temp.md<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
 nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
@@ -73,8 +88,6 @@ nnoremap <leader>nt :split ~/.cloud/temp.md<cr>
 " 搜索文件下方法
 nnoremap <leader>fu :CtrlPFunky<Cr>
 nnoremap <leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
-
-nnoremap <silent> <leader>gr :Gread<CR>
 
 augroup filetype_vim
    autocmd!
@@ -135,10 +148,12 @@ autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
 let g:go_fmt_command = "goimports"
 
 " 代码检测
-let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
-let g:go_metalinter_autosave = 1
-let g:go_metalinter_autosave_enabled = ['vet', 'golint']
-let g:go_metalinter_deadline = "5s"
+"let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
+"let g:go_metalinter_enabled = ['vet', 'errcheck']
+"let g:go_metalinter_autosave = 1
+"let g:go_metalinter_autosave_enabled = ['vet', 'golint', 'errcheck']
+"let g:go_metalinter_enabled = ['vet', 'errcheck']
+"let g:go_metalinter_deadline = "5s"
 
 " xxx.go与xxx_test.go之间切换
 autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
@@ -151,5 +166,5 @@ let g:go_decls_includes = "func,type" "ctrlp插件设置搜索的类型
 "let g:go_auto_type_info = 1 " 开启自动GoInfo, 显示函数声明
 "set updatetime=100 " 设置GoInfo显示的延迟时间
 autocmd FileType go nmap <Leader>i <Plug>(go-info) "显示函数声明
-let g:go_auto_sameids = 1 "自动高亮当前位置的单词
+"let g:go_auto_sameids = 1 "自动高亮当前位置的单词
 autocmd FileType go nmap <Leader>gr <Plug>(go-referrers) " 函数被调用列表
