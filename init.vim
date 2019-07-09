@@ -31,7 +31,7 @@ call plug#end()
 let g:deoplete#enable_at_startup = 1 
 let g:neopairs#enable = 1
 let g:neosnippet#disable_runtime_snippets = {
-\   '_' : 1,
+\   '_' : 0,
 \ }
 call deoplete#custom#source('_', 'converters', ['converter_auto_paren'])
 imap <expr><TAB> pumvisible() ? "\<C-n>" : (neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>") 
@@ -73,7 +73,7 @@ nnoremap <leader>v :execute "rightbelow split" . bufname("#")<cr>
 inoremap jk <esc>
 inoremap <c-u> viwgU
 nnoremap <leader>ev :split $MYVIMRC<cr>
-nnoremap <leader>es :vsplit ~/.config/nvim/plugged/vim-go/gosnippets/UltiSnips/go.snippets<cr>
+nnoremap <leader>es :vsplit ~/.nvimGit/go.snip<cr>
 nnoremap <leader>en :vsplit ~/.cloud/temp.md<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
@@ -168,3 +168,10 @@ let g:go_decls_includes = "func,type" "ctrlp插件设置搜索的类型
 autocmd FileType go nmap <Leader>i <Plug>(go-info) "显示函数声明
 "let g:go_auto_sameids = 1 "自动高亮当前位置的单词
 autocmd FileType go nmap <Leader>gr <Plug>(go-referrers) " 函数被调用列表
+
+
+" Enable snipMate compatibility feature.
+let g:neosnippet#enable_snipmate_compatibility = 1
+
+" Tell Neosnippet about the other snippets
+let g:neosnippet#snippets_directory='~/.nvimGit'
