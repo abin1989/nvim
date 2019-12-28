@@ -164,8 +164,7 @@ autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit'
 autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
 autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
 
-" let g:go_def_mode = 'godef' "跳转到定义的地方，比guru速度要快
-let g:go_def_mode = 'guru' "跳转到定义的地方，比guru速度要快
+let g:go_def_mode = 'gopls' "跳转到定义的地方，比guru速度要快
 let g:go_decls_includes = "func,type" "ctrlp插件设置搜索的类型
 "let g:go_auto_type_info = 1 " 开启自动GoInfo, 显示函数声明
 "set updatetime=100 " 设置GoInfo显示的延迟时间
@@ -180,5 +179,5 @@ let g:neosnippet#enable_snipmate_compatibility = 1
 " Tell Neosnippet about the other snippets
 let g:neosnippet#snippets_directory='~/.nvimGit'
 
-autocmd BufEnter * silent! lcd %:p:h 
+autocmd BufEnter * silent! lcd %:p:h
 " nnoremap <leader>cd :cd %:p:h<CR> " 手动把路径切换到当前路径
