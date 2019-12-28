@@ -12,6 +12,7 @@ Plug 'Shougo/neopairs.vim'
 Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
 "Plug 'neomake/neomake'
 Plug 'itchyny/lightline.vim'
+Plug 'buoto/gotests-vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'easymotion/vim-easymotion'
 Plug 'scrooloose/nerdtree'
@@ -126,6 +127,8 @@ let g:ctrlsf_auto_focus = {
 
 nnoremap <leader>yd  :<C-u>Ydc<CR><CR>  " 词典
 
+nnoremap <leader>m  :GoImport 
+
 map <C-n> :cnext<CR> " 跳转到下一个错误
 map <C-m> :cprevious<CR> " 跳转到上一个错误
 nnoremap <leader>a :cclose<CR> " 关闭错误提示窗口
@@ -148,12 +151,12 @@ autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
 let g:go_fmt_command = "goimports"
 
 " 代码检测
-"let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
-"let g:go_metalinter_enabled = ['vet', 'errcheck']
-"let g:go_metalinter_autosave = 1
-"let g:go_metalinter_autosave_enabled = ['vet', 'golint', 'errcheck']
-"let g:go_metalinter_enabled = ['vet', 'errcheck']
-"let g:go_metalinter_deadline = "5s"
+" let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
+" let g:go_metalinter_enabled = ['vet', 'errcheck']
+" let g:go_metalinter_autosave = 1
+" let g:go_metalinter_autosave_enabled = ['vet', 'golint', 'errcheck']
+" let g:go_metalinter_enabled = ['vet', 'errcheck']
+" let g:go_metalinter_deadline = "5s"
 
 " xxx.go与xxx_test.go之间切换
 autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
@@ -161,7 +164,8 @@ autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit'
 autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
 autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
 
-let g:go_def_mode = 'godef' "跳转到定义的地方，比guru速度要快
+" let g:go_def_mode = 'godef' "跳转到定义的地方，比guru速度要快
+let g:go_def_mode = 'guru' "跳转到定义的地方，比guru速度要快
 let g:go_decls_includes = "func,type" "ctrlp插件设置搜索的类型
 "let g:go_auto_type_info = 1 " 开启自动GoInfo, 显示函数声明
 "set updatetime=100 " 设置GoInfo显示的延迟时间
@@ -175,3 +179,6 @@ let g:neosnippet#enable_snipmate_compatibility = 1
 
 " Tell Neosnippet about the other snippets
 let g:neosnippet#snippets_directory='~/.nvimGit'
+
+autocmd BufEnter * silent! lcd %:p:h 
+" nnoremap <leader>cd :cd %:p:h<CR> " 手动把路径切换到当前路径
