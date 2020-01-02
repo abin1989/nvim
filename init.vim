@@ -178,7 +178,7 @@ let g:neosnippet#enable_snipmate_compatibility = 1
 " Tell Neosnippet about the other snippets
 let g:neosnippet#snippets_directory='~/.nvimGit'
 
-autocmd BufEnter * silent! lcd %:p:h 
+autocmd BufEnter * silent! lcd %:p:h
 " nnoremap <leader>cd :cd %:p:h<CR> " 手动把路径切换到当前路径
 
 
