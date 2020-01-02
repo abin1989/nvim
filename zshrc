@@ -92,29 +92,4 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias init="vi /Users/shiyubin/.config/nvim/init.vim"
-alias vi="nvim" 
-
-[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
-export GOPATH="$HOME/go"
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-export PATH="$HOME/go/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/.gotools:$PATH"
-export PATH="/usr/local/opt/ruby/bin:$PATH"
-source <(kubectl completion zsh)
-alias ali-master="ssh root@139.224.23.223"
-alias ali-node1="ssh root@118.190.79.9"
-alias gt="go test"
-alias rmall="docker stop \$(docker ps -a -q);docker rm \$(docker ps -a -q)"
-alias du="docker-compose up -d"
-alias dp="docker-compose ps"
-alias dc="docker-compose"
-alias dl="docker logs"
-alias df="docker logs -f"
-alias da="docker ps -a"
-alias cds="cd ~/go/src"
-export GO111MODULE=auto
-
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /Users/shiyubin/go/bin/gocomplete go
+source ~/.zsh_env_vars

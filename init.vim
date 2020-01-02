@@ -86,9 +86,7 @@ onoremap p i(
 
 nnoremap <leader>nt :split ~/.cloud/temp.md<cr>
 
-" 搜索文件下方法
-nnoremap <leader>fu :CtrlPFunky<Cr>
-nnoremap <leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
+nnoremap <leader>ff :GoTestFunc<Cr>
 
 augroup filetype_vim
    autocmd!
@@ -164,8 +162,8 @@ autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit'
 autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
 autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
 
-" let g:go_def_mode = 'godef' "跳转到定义的地方，比guru速度要快
-let g:go_def_mode = 'guru' "跳转到定义的地方，比guru速度要快
+let g:go_def_mode = 'godef' "跳转到定义的地方，比guru速度要快
+"let g:go_def_mode = 'guru' "跳转到定义的地方，比guru速度要快
 let g:go_decls_includes = "func,type" "ctrlp插件设置搜索的类型
 "let g:go_auto_type_info = 1 " 开启自动GoInfo, 显示函数声明
 "set updatetime=100 " 设置GoInfo显示的延迟时间
@@ -182,3 +180,24 @@ let g:neosnippet#snippets_directory='~/.nvimGit'
 
 autocmd BufEnter * silent! lcd %:p:h 
 " nnoremap <leader>cd :cd %:p:h<CR> " 手动把路径切换到当前路径
+
+
+let g:go_decls_includes = "func,type"
+" 搜索文件下方法
+nnoremap <leader>fu :GoDecls<Cr>
+nnoremap <leader>ff :GoDeclsDir<Cr>
+"let g:go_auto_type_info = 1
+"set updatetime=100
+
+
+
+" :GoSameIds 类似于#的功能
+" :GoFiles :GoDeps 查找当前文件的依赖文件和依赖库
+nnoremap <leader>d :GoDescribe<Cr>  " 描述鼠标当前的值，显示出方法和结构体
+nnoremap <leader>p :GoImplements<Cr>  " 当前结构体实现了哪些接口
+nnoremap <leader>er :GoWhicherrs<Cr>  " 打印可能的错误
+nnoremap <leader>cp :GoChannelPeers<Cr>  " 通道信息
+" :GoRename 重命名当前鼠标的值的名字
+" :GoImpl XXX(io.Read) 当前结构体实现某接口,该接口的代码会自动生成
+" :GoImpl b *B fmt.Stringer 生成某个接口的实现，不需要鼠标指定某个结构体
+
