@@ -11,7 +11,6 @@ export PATH="$HOME/go/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 export PATH="/usr/local/Cellar/node/11.13.0/bin:$PATH"
 source <(kubectl completion zsh)
-alias gt="go test"
 alias rmall="docker stop \$(docker ps -a -q);docker rm \$(docker ps -a -q)"
 alias du="docker-compose up -d"
 alias dp="docker-compose ps"
@@ -19,8 +18,51 @@ alias dc="docker-compose"
 alias dl="docker logs"
 alias df="docker logs -f"
 alias da="docker ps -a"
-alias cds="cd ~/go/src"
+alias cds="cd ~/project"
+alias cdg="cd ~/project/wonderland/tools/genFile"
+alias dl="docker logs"
+alias df="docker logs -f"
+alias genfile="cd ~/project/tools/genFile;make;cd -"
+alias sconf="vi /etc/supervisor/supervisord.conf"
+alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
+alias dc="docker-compose"
+alias rmall="docker stop \$(docker ps -a -q);docker rm \$(docker ps -a -q)"
+alias gtr="go test -v -test.run "
+alias gt="go test -v"
+alias gcf="git checkout feature_1.0.8"
+alias gcj="git checkout jaeger"
+alias rec="vi ~/project/test/tmp.md"
 export GO111MODULE=auto
 
 autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /Users/shiyubin/go/bin/gocomplete go
+complete -o nospace -C $HOME/go/bin/gocomplete go
+
+ulimit -n 4096
+
+export MICRO_CLIENT_REQUEST_TIMEOU=60s
+export MICRO_CLIENT_POOL_SIZE=2
+export MICRO_REGISTER_TTL=30
+export MICRO_REGISTER_INTERVAL=10
+export MICRO_BROKER=nats
+export MICRO_BROKER_ADDRESS=10.4.60.31:4222
+export MICRO_REGISTRY=consul
+export MICRO_REGISTRY_ADDRESS=10.4.60.31:8500
+export MICRO_TRANSPORT=tcp
+export CONFIG_ADDRESS=10.4.60.31:8500
+export AGENT_ID=3
+export GO111MODULE=on
+export GOPROXY=https://goproxy.cn,direct
+export MICRO_SERVER_METADATA=Agent=3
+export BACKEND_BASE_URL=http://10.4.60.48:33001/wonderland-web
+export KAFKA_ADDRESS=10.4.60.44:9092
+export REDIS_ADDRESS=10.4.60.79:6379,10.4.60.79:6380
+
+# jmeter配置
+export JAVA_8_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_231.jdk/Contents/Home # 等号右边的路径目录，可以通过/usr/libexec/java_home -V这个命令得到
+export JAVA_HOME=$JAVA_8_HOME # 设置一个中间变量，为了方便多个JDK版本时更换JAVA_HOME
+#export PATH=$JAVA_HOME/bin:$PATH:. #冒号前代表JDK目录下的bin目录，冒号后代表当前目录
+#export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+
+export JMETER_HOME=$HOME/Downloads/apache-jmeter-5.1.1
+export PATH=$JAVA_HOME/bin:$PATH:.:$JMETER_HOME/bin:$PATH
+export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JMETER_HOME/lib/ext/ApacheJMeter_core.jar:$JMETER_HOME/lib/jorphan.jar:$JMETER_HOME/lib/logkit-2.0.jar
