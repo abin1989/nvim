@@ -1,0 +1,26 @@
+alias init="vi ~/.config/nvim/init.vim"
+alias vi="nvim" 
+alias gv="go test -v" 
+
+[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+export GOPATH="$HOME/go"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export PATH="$HOME/go/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/.gotools:$PATH"
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+export PATH="/usr/local/Cellar/node/11.13.0/bin:$PATH"
+source <(kubectl completion zsh)
+alias gt="go test"
+alias rmall="docker stop \$(docker ps -a -q);docker rm \$(docker ps -a -q)"
+alias du="docker-compose up -d"
+alias dp="docker-compose ps"
+alias dc="docker-compose"
+alias dl="docker logs"
+alias df="docker logs -f"
+alias da="docker ps -a"
+alias cds="cd ~/go/src"
+export GO111MODULE=auto
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /Users/shiyubin/go/bin/gocomplete go

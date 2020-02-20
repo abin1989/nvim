@@ -6,6 +6,13 @@ alias yubin
 options     head
   hello abin
 
+
+snippet     println
+abbr        println(...)
+alias pr
+options     head
+  println(${1})
+
 snippet     ranges
 abbr        for k, v := range slice{}
 alias rs
@@ -146,6 +153,7 @@ options     head
     ${2}
 
 snippet     switch
+alias       sw
 abbr        switch {}
 options     head
   switch ${1:#:v} {
@@ -170,7 +178,9 @@ snippet     funcTest
 alias       ft
 abbr        func Test... (t *testing.T) { ... }
 options     head
-  func Test${1} (${2:t *testing.T}) {
+  //${1}
+  func Test${2} (t *testing.T) {
+    ${0:TARGET}
   }
 
 snippet     funcbench
