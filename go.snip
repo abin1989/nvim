@@ -164,6 +164,7 @@ options     head
     ${2}
 
 snippet     switch
+alias       sw
 abbr        switch {}
 options     head
   switch ${1:#:v} {
@@ -188,8 +189,9 @@ snippet     funcTest
 alias       ft
 abbr        func Test... (t *testing.T) { ... }
 options     head
-  func Test${1} (t *testing.T) {
-        ${0:TARGET}
+  //${1}
+  func Test${2} (t *testing.T) {
+    ${0:TARGET}
   }
 
 snippet     funcbench
