@@ -1,0 +1,54 @@
+{
+    "go.formatTool": "goimports",
+    "go.useLanguageServer": true,
+    "vim.easymotion": true,
+    "vim.sneak": true,
+    "vim.leader": ",",
+    "vim.changeWordIncludesWhitespace": true,
+    "vim.neovimPath": "/usr/local/bin/nvim",
+    "files.autoSave": "onFocusChange",
+    "vim.insertModeKeyBindings": [
+        {
+          "before": ["j", "k"],
+          "after": ["<Esc>"]
+        }
+    ],
+    "vim.normalModeKeyBindings": [
+        {
+            "before": ["<leader>", "a"],
+            "after": ["^"]
+        },
+        {
+            "before": ["<leader>", "r"],
+            "commands":[":go run main.go"]
+        }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["<C-n>"],
+            "commands": [
+                ":nohl"
+            ]
+        }
+    ],
+
+    "editor.lineNumbers": "relative",
+    "window.newWindowDimensions":"inherit",//  - inherit: Open new windows with same dimension as last active one.
+    "go.gopath": "~/go",
+    "go.delveConfig": {
+        "dlvLoadConfig": {
+            "followPointers": true,
+            "maxVariableRecurse": 1,
+            "maxStringLen": 64,
+            "maxArrayValues": 64,
+            "maxStructFields": -1
+        },
+        "apiVersion": 2,
+        "showGlobalVariables": true
+    },
+    "window.zoomLevel": 1,
+    "workbench.colorTheme": "Visual Studio Light",
+    "editor.minimap.enabled": false,
+    "vim.useSystemClipboard": true,
+    "explorer.confirmDelete": false,
+}
