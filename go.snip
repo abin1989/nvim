@@ -1,10 +1,28 @@
 source go.vim
 
-snippet     abin2
+snippet     abin
 abbr        package main\nimport fmt...
 alias yubin
 options     head
   hello abin
+
+snippet     println()
+abbr        println(...)
+alias pr
+options     head
+  println(${0})
+
+snippet     spew.Dump
+abbr        spew.Dump(...)
+alias sd
+options     head
+  spew.Dump(${0})
+
+snippet     fmterr
+abbr        err = fmt.Errorf("%w:%s",...)
+alias frr
+options     head
+  err = fmt.Errorf("%w:%s",${1},${0})
 
 snippet     ranges
 abbr        for k, v := range slice{}
@@ -170,7 +188,8 @@ snippet     funcTest
 alias       ft
 abbr        func Test... (t *testing.T) { ... }
 options     head
-  func Test${1} (${2:t *testing.T}) {
+  func Test${1} (t *testing.T) {
+        ${0:TARGET}
   }
 
 snippet     funcbench
