@@ -209,5 +209,5 @@ nnoremap <leader>er :GoWhicherrs<Cr>  " 打印可能的错误
 
 nnoremap gs :GoDefStack<Cr>  " 跳转信息
 
-"let g:go_def_mode = 'godef' "跳转到定义的地方，比guru速度要快
-let g:go_def_mode = 'guru' "跳转到定义的地方，比guru速度要快
+let g:go_def_mode = 'godef' "跳转到定义的地方，比guru速度要快
+"let g:go_def_mode = 'guru' "跳转到定义的地方，比guru速度要快

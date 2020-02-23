@@ -3,10 +3,23 @@
     "go.useLanguageServer": true,
     "vim.easymotion": true,
     "vim.sneak": true,
-    "vim.leader": ",",
+    // "vim.autoSwitchInputMethod.enable": true,
+    // "vim.autoSwitchInputMethod.defaultIM": "com.apple.keylayout.British",
+    // "vim.autoSwitchInputMethod.obtainIMCmd": "/usr/local/bin/im-select",
+    // "vim.autoSwitchInputMethod.switchIMCmd": "/usr/local/bin/im-select {im}",
+    
+
+    "vim.leader": "<space>",
     "vim.changeWordIncludesWhitespace": true,
     "vim.neovimPath": "/usr/local/bin/nvim",
     "files.autoSave": "onFocusChange",
+
+    "vim.insertModeKeyBindings": [
+        {
+          "before": ["j", "j"],
+          "after": ["<Esc>"]
+        }
+    ],
     "vim.insertModeKeyBindings": [
         {
           "before": ["j", "k"],
@@ -17,6 +30,14 @@
         {
             "before": ["<leader>", "a"],
             "after": ["^"]
+        },
+        {
+            "before": ["<leader>","d"],
+            "after": ["<C-d>"]
+        },
+        {
+            "before": ["<leader>","f"],
+            "after": ["<C-u>"]
         },
         {
             "before": ["<leader>", "r"],
@@ -31,6 +52,7 @@
             ]
         }
     ],
+
 
     "editor.lineNumbers": "relative",
     "window.newWindowDimensions":"inherit",//  - inherit: Open new windows with same dimension as last active one.
