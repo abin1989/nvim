@@ -114,7 +114,8 @@ iabbrev tehn then
 iabbrev diff difference
 iabbrev dict //********dict: word data:
 iabbrev logg log "github.com/sirupsen/logrus"
-iabbrev speww "github.com/davecgh/go-spew/spew"
+iabbrev spew "github.com/davecgh/go-spew/spew"
+iabbrev ass "github.com/stretchr/testify/assert"
 
 " ctrlsf配置
 nmap     <C-F>f <Plug>CtrlSFPrompt

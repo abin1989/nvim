@@ -93,7 +93,6 @@ abbr        a = append(a ,val)
 alias app
 options     head
   ${1:slice} = append($1, ${2:val})
-  ${0:TARGET}
 
 snippet     func
 abbr        func ...() { ... }
@@ -189,8 +188,7 @@ snippet     funcTest
 alias       ft
 abbr        func Test... (t *testing.T) { ... }
 options     head
-  //${1}
-  func Test${2} (t *testing.T) {
+  func Test${1} (t *testing.T) {
     ${0:TARGET}
   }
 
