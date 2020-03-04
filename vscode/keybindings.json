@@ -105,4 +105,12 @@
         "key": "cmd+d",
         "command": "workbench.action.quickSwitchWindow"
     },
+    {
+        "key": "ctrl+`",
+        "command": "-workbench.action.terminal.toggleTerminal"
+    },
+    {
+        "key": "ctrl+`",
+        "command": "-workbench.action.terminal.toggleTerminal"
+    },
 ]
